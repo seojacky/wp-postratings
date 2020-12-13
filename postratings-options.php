@@ -253,7 +253,11 @@ $postratings_image = get_option( 'postratings_image' );
 						}
 						foreach($postratings_images_array as $key => $value) {
 							if(strpos($value['images'][0], '.'.RATINGS_IMG_EXT) === false) {
+								/* In the case of installing a custom file extension, for example PNG, we do an additional check if there is
+								file with the extension gif. And if there is, then we show */
+								if(strpos($value['images'][0], '.gif') === false) {
 								continue;
+								}
 							}
 							echo '<p>';
 							if($value['custom'] == 0) {
